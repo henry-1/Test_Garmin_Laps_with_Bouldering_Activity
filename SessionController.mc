@@ -12,9 +12,11 @@ class SessionController {
 
     hidden var _fitFieldBoulder;             // chart of the boulder hight
     hidden var _fitFieldBoulderHight;        // highest boulder in a lap
+    hidden var _fitFieldBoulderCount;
 
     hidden var _LapTimer;
     hidden var _LapTimerIndex = 0;
+    hidden var _LapCounter = 0;
 
     hidden var _RandMaxHight = 0;
     hidden var _LapMaxHight = 0;
@@ -53,12 +55,14 @@ class SessionController {
         _fitFieldBoulderHight.setData(_LapMaxHight);
         var result = _Session.addLap();
         System.println("Added lap to session: " + result.toString());
+        _LapCounter++;
     }
 
     function stop() as Void {
         System.println("Session stop");
         _Session.stop();
 
+    	_fitFieldBoulderCount.setData(_LapCounter);
         System.println("Session save");
         _Session.save();
     }
@@ -90,13 +94,23 @@ class SessionController {
                 }
             );
 
-            _fitFieldBoulderHight= _Session.createField(
+            _fitFieldBoulderHight = _Session.createField(
                 WatchUi.loadResource(Rez.Strings.hight_label),   // field name
                 1,                                               // filed ID
                 FitContributor.DATA_TYPE_FLOAT,                  // type
                 {
                     :mesgType=>FitContributor.MESG_TYPE_LAP,
                     :units=>WatchUi.loadResource(Rez.Strings.hight_units)
+                }
+            );
+
+            _fitFieldBoulderCount = _Session.createField(
+                WatchUi.loadResource(Rez.Strings.counter_label), // field name
+                2,                                               // filed ID
+                FitContributor.DATA_TYPE_FLOAT,                  // type
+                {
+                    :mesgType=>FitContributor.MESG_TYPE_SESSION,
+                    :units=>WatchUi.loadResource(Rez.Strings.counter_units)
                 }
             );
 

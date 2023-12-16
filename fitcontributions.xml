@@ -1,0 +1,12 @@
+<fitContributions>
+    <fitField id="0" displayInChart="true" sortOrder="0" precision="2"
+        chartTitle="@Strings.hight_title" dataLabel="@Strings.hight_label"
+        unitLabel="@Strings.hight_units" fillColor="#FF0000"
+    />
+    <fitField id="1" displayInActivityLaps="true" sortOrder="1" precision="2"
+        dataLabel="@Strings.hight_label" unitLabel="@Strings.hight_units"
+    />
+    <fitField id="2" displayInActivitySummary="true" sortOrder="2" precision="0"
+        dataLabel="@Strings.counter_label" unitLabel="@Strings.counter_units"
+    />
+</fitContributions>
