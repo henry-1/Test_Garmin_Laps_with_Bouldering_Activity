@@ -61,7 +61,7 @@ class SessionController {
     function stop() as Void {
         System.println("Session stop");
         _Session.stop();
-
+        //_fitFieldBoulder.setData(_RandMaxHight);
     	_fitFieldBoulderCount.setData(_LapCounter);
         System.println("Session save");
         _Session.save();
@@ -76,14 +76,14 @@ class SessionController {
                         :subSport=>Activity.SUB_SPORT_GENERIC          // set sub sport type
             });
 
-            /*
+/*
             _Session = ActivityRecording.createSession({
                 :sport=>Activity.SPORT_ROCK_CLIMBING,
                 :subSport=>Activity.SUB_SPORT_BOULDERING,
                 :name=>"BoulderSession"
             });
-            */
 
+*/
             _fitFieldBoulder = _Session.createField(
                 WatchUi.loadResource(Rez.Strings.hight_label),   // field name
                 0,                                               // filed ID
